@@ -17,7 +17,7 @@ def get_ticker_volume(ticker):
     try:
         print(f"Obtendo dados para o ticker: {ticker}")
         stock = yf.Ticker(ticker)
-        hist = stock.history(period='1mo')
+        hist = stock.history(period='5d')
         if hist.empty:
             print(f"Nenhum dado encontrado para o ticker: {ticker}")
             return 0
@@ -26,7 +26,7 @@ def get_ticker_volume(ticker):
         print(f"Erro ao obter dados para o ticker {ticker}: {e}")
         return 0
 
-def get_top_usa_tickers(n=25):
+def get_top_usa_tickers(total_tickers):
     usa_tickers = get_usa_tickers()
     ticker_volumes = {}
     
@@ -38,11 +38,11 @@ def get_top_usa_tickers(n=25):
             print(f"Ticker {ticker} não foi incluído devido a volume inválido.")
 
     sorted_tickers = sorted(ticker_volumes.items(), key=lambda x: x[1], reverse=True)
-    top_tickers = [ticker for ticker, volume in sorted_tickers[:n]]
+    top_tickers = [ticker for ticker, volume in sorted_tickers[:total_tickers]]
     return top_tickers
 
 
-def get_top_brazil_tickers(n=25):
+def get_top_brazil_tickers(total_tickers):
     brazil_tickers = get_brazil_tickers()
     ticker_volumes = {}
     
@@ -54,6 +54,6 @@ def get_top_brazil_tickers(n=25):
             print(f"Ticker {ticker} não foi incluído devido a volume inválido.")
 
     sorted_tickers = sorted(ticker_volumes.items(), key=lambda x: x[1], reverse=True)
-    top_tickers = [ticker for ticker, volume in sorted_tickers[:n]]
+    top_tickers = [ticker for ticker, volume in sorted_tickers[:total_tickers]]
     return top_tickers
 
