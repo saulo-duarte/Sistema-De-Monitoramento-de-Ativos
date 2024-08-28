@@ -57,3 +57,13 @@ def get_top_brazil_tickers(total_tickers):
     top_tickers = [ticker for ticker, volume in sorted_tickers[:total_tickers]]
     return top_tickers
 
+expected_types_stock_dict = {
+    'Date': 'datetime64[ns]',
+    'Open': 'float64',
+    'High': 'float64',
+    'Low': 'float64',
+    'Close': 'float64',
+    'Adj Close': 'float64',
+    'Volume': 'int64',
+    'Ticker': 'object'
+}
