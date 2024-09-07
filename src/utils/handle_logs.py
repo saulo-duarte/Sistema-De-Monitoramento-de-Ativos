@@ -7,8 +7,13 @@ class ListHandler(logging.Handler):
 
     def emit(self, record):
         try:
-            # Formatação do log
-            log_entry = self.format(record)
+            # Utiliza a formatação padrão para o tempo
+            formatter = self.formatter  # Acessa o formatador configurado
+            log_entry = {
+                "timestamp": formatter.formatTime(record),  # Usa o formatador para o tempo
+                "level": record.levelname,
+                "message": record.getMessage()
+            }
             self.logs.append(log_entry)
         except Exception as e:
             self.handleError(record)
