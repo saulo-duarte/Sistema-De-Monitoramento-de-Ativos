@@ -14,11 +14,14 @@ class DataCollector:
     def download_data(self, ticker, start_date, end_date):
         try:
             df = yf.download(ticker, start=start_date, end=end_date)
-            df.reset_index(inplace=True) 
+            if df is None or df.empty:
+                self.logger.warning(f"Nenhum dado foi retornado para o ticker {ticker}.")
+                return None
+            df.reset_index(inplace=True)
             df['Ticker'] = ticker
             return df
         except Exception as e:
-            self.logger.error(f"Erro ao extrair os dados, ticker {ticker}: {e}")          
+            self.logger.error(f"Erro ao extrair os dados para o ticker {ticker}: {e}")
             return None
 
     def get_dividends(self, ticker):
