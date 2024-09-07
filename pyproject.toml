@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.11"
 pandas = "^2.2.2"
 psycopg2 = "^2.9.9"
+yfinance = "^0.2.42"
+snowflake-connector-python = "^3.12.1"
+snowflake-sqlalchemy = "^1.6.1"
 
 
 [build-system]
