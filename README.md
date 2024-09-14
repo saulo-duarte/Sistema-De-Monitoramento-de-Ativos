@@ -24,4 +24,4 @@ O objetivo deste projeto é criar um sistema de monitoramento de ativos financei
 ```
 ## Arquitetura
 
-![Arquitetura](media/financial_arch.svg)
+![Arquitetura](media/financial_data_arch.svg)
