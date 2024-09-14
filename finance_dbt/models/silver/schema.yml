@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: bronze_table
+    description: "Descrição do modelo"
